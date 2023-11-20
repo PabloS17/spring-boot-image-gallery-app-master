@@ -69,7 +69,6 @@ public class ImageController {
                                                        Model model, HttpServletRequest request
             , final @RequestParam("image") MultipartFile file) {
         try {
-            //String uploadDirectory = System.getProperty("user.dir") + uploadFolder;
             String uploadDirectory = request.getServletContext().getRealPath(uploadFolder);
             log.info("uploadDirectory:: " + uploadDirectory);
             String fileName = file.getOriginalFilename();
