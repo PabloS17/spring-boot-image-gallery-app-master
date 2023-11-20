@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Detalles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<br>
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>I</span>mage
+            <span>D</span>etails</h3><br>
+        <!-- //tittle heading -->
+        <div class="row">
+            <div class="col-lg-5 col-md-8 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <div class="thumb-image">
+                            <img th:src="@{${'/image/display/'+id}}"
+                                 class="img img-responsive img-fluid" alt="">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                Keywords: <span th:text="${keywords}" class="mb-3"></span>
+                <br>
+                    Author : <span class="item_author" th:text="${author}"></span>
+                <br>
+                    Owner : <span class="item_owner" th:text="${owner}"></span>
+                <br>
+                    License : <span class="item_license" th:text="${license}"></span>
+
+                <br>
+                    Taxons : <span class="item_taxons" th:text="${taxons}"></span>
+                <br>
+                    Description: <span th:text="${description}" class="my-sm-4 my-3">
+						</span>
+                <br>
+                <a href="/image/show">Ir atras</a>
+                &emsp;<a href="/">Ir a subir</a>
+
+                <form th:action="@{/changeAuthor}" method="post">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label for="newAuthor">New Author:</label>
+                    <input type="number" id="newAuthor" name="newAuthor" required>
+                    <button type="submit">Change Author</button>
+                </form>
+                <form th:action="@{/changeOwner}" method="post">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label for="newOwner">New Owner:</label>
+                    <input type="number" id="newOwner" name="newOwner" required>
+                    <button type="submit">Change Owner</button>
+                </form>
+                <form th:action="@{/changeLicense}" method="post">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label for="newLicense">New License:</label>
+                    <input type="number" id="newLicense" name="newLicense" required>
+                    <button type="submit">Change License</button>
+                </form>
+                <form th:action="@{/changeTaxons}" method="post">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label for="newTaxons">New Taxons:</label>
+                    <input type="number" id="newTaxons" name="newTaxons" required>
+                    <button type="submit">Change Taxons</button>
+                </form>
+
+                <form th:action="@{/changeKeywords}" method="post">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label for="newKeywords">New Keywords:</label>
+                    <input type="text" id="newKeywords" name="newKeywords" required>
+                    <button type="submit">Change Keywords</button>
+                </form>
+
+                <form th:action="@{/changeDescription}" method="post">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label for="newDescription">New Description:</label>
+                    <input type="text" name="newDescription" id="newDescription" required>
+                    <input type="submit" value="Change Description">
+                </form>
+                <form th:action="@{/deleteProd/{id}(id=${id})}" method="get">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
