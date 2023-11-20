@@ -131,7 +131,7 @@ public class ImageController {
     @GetMapping("/image/display/{id}")
     @ResponseBody
     void showImage(@PathVariable("id") Long id, HttpServletResponse response, Optional<Image> image)
-            throws ServletException, IOException {
+            throws IOException {
         log.info("Id :: " + id);
         image = imageService.getImageById(id);
         response.setContentType("image/jpeg");
